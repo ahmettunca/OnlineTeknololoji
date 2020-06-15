@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4287da956a514bc6b955498858c90426" Name="Diagram1">
+        <EntityTypeShape EntityType="teknoMarketDBModel.FotoTablo" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknoMarketDBModel.GonderimDetayTablo" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknoMarketDBModel.KategoriTablo" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknoMarketDBModel.RollerTablo" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknoMarketDBModel.sepetDurumuTablo" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknoMarketDBModel.Sepettablo" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknoMarketDBModel.UrunTablo" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknoMarketDBModel.Uyeler" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknoMarketDBModel.UyeRolTablo" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="teknoMarketDBModel.FK__GonderimD__UyeId__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="teknoMarketDBModel.FK__UrunTablo__Kateg__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="teknoMarketDBModel.FK__Sepettabl__UrunI__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="teknoMarketDBModel.FK__Sepettabl__UrunI__36B122431" />
+        <AssociationConnector Association="teknoMarketDBModel.FK__Sepettabl__UrunI__36B122432" />
+        <AssociationConnector Association="teknoMarketDBModel.FK__Sepettabl__UrunI__36B122433" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

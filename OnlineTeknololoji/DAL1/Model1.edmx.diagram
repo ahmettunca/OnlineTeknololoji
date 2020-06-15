@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6f909513bae84a82bf32bed502c21f67" Name="Diagram1">
+        <EntityTypeShape EntityType="teknomarketDB1Model.FotoTablo" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknomarketDB1Model.GonderimDetayTablo" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknomarketDB1Model.KategoriTablo" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknomarketDB1Model.RollerTablo" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknomarketDB1Model.sepetDurumuTablo" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknomarketDB1Model.SepetTablo" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknomarketDB1Model.Uyeler" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="teknomarketDB1Model.UyeRolTablo" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="teknomarketDB1Model.FK__GonderimD__UyeId__30F848ED" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="teknomarketDB1Model.UrunTablo" Width="1.5" PointX="3" PointY="1.125" />
+        <AssociationConnector Association="teknomarketDB1Model.FK__UrunTablo__Kateg__286302EC" />
+        <AssociationConnector Association="teknomarketDB1Model.FK__SepetTabl__UrunI__36B12243" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

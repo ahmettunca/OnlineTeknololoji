@@ -1,0 +1,109 @@
+create database teknomarketDB1
+go
+use teknomarketDB1
+go
+create table KategoriTablo
+(
+KategoriId int identity primary key,
+KategoriIsim varchar(500) unique,
+AktifMi bit null,
+SilindiMi bit null,
+)
+
+create table UrunTablo
+(
+urunId int identity primary key,
+UrunIsim varchar(500) unique,
+KategoriId int,
+AktifMi bit null,
+SilindiMi bit null,
+OlusturmaTarihi datetime null,
+DegistirilmeTarihi datetime null,
+UrunFoto varchar(max),
+OzellikliMi bit null,
+Miktar int,
+Fiyat int,
+foreign key (KategoriId) references KategoriTablo(KategoriId)
+)
+
+create table SepetDurumuTablo
+(
+SepetDurumuId int identity primary key,
+SepetDurumu varchar(500)
+)
+
+create table Uyeler
+(
+UyeId int identity primary key,
+Ad varchar(200),
+SoyAd varchar(200) unique,
+EmailId varchar(200) unique,
+Parola varchar(500),
+AktifMi bit null,
+SilindiMi bit null,
+Olusturma datetime,
+Guncelleme datetime
+)
+
+create table GonderimDetayTablo
+(
+GonderimDetayId int identity primary key,
+UyeId int,
+Adres varchar(500),
+Ulke varchar(50),
+Sehir varchar(500),
+Durum varchar(500),
+PostaKodu varchar(50),
+SiparisId varchar(50),
+OdenenMiktar decimal,
+OdemeTipi varchar(50),
+foreign key (UyeId) references Uyeler(UyeId)
+)
+
+create table RollerTablo
+(
+RolId int identity primary key,
+RolIsim varchar(200) unique
+)
+
+create table SepetTablo
+(
+SepetId int identity primary key,
+UrunId int,
+UyeId int,
+SepetDurumuId int,
+foreign key (UrunId) references UrunTablo(UrunId)
+)
+
+create table UyeRolTablo
+(
+UyeRolId int identity primary key,
+UyeId int,
+RolId int
+)
+
+create table FotoTablo
+(
+FotoId int identity primary key,
+FotoBaslik varchar(500),
+Foto varchar(max)
+)
+
+USE [teknomarketDB1Entities]
+GO
+/****** Object:  StoredProcedure [dbo].[GetBySearch]    Script Date: 15.06.2020 12:39:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[GetBySearch]
+	@search nvarchar(max)=null
+AS
+BEGIN
+	SELECT *from [dbo].[UrunTablo] P
+	left join [dbo].[KategoriTablo] C on p.KategoriId=c.KategoriId
+	where
+	P.UrunIsim LIKE CASE WHEN @search is not null then  '%'+@search+'%' else P.UrunIsim end
+	OR
+	C.KategoriIsim LIKE CASE WHEN @search is not null then  '%'+@search+'%' else C.KategoriIsim end
+END

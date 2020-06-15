@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="teknomarketDB1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FotoTablo">
+          <Key>
+            <PropertyRef Name="FotoId" />
+          </Key>
+          <Property Name="FotoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FotoBaslik" Type="varchar" MaxLength="500" />
+          <Property Name="Foto" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GonderimDetayTablo">
+          <Key>
+            <PropertyRef Name="GonderimDetayId" />
+          </Key>
+          <Property Name="GonderimDetayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UyeId" Type="int" />
+          <Property Name="Adres" Type="varchar" MaxLength="500" />
+          <Property Name="Ulke" Type="varchar" MaxLength="50" />
+          <Property Name="Sehir" Type="varchar" MaxLength="500" />
+          <Property Name="Durum" Type="varchar" MaxLength="500" />
+          <Property Name="PostaKodu" Type="varchar" MaxLength="50" />
+          <Property Name="SiparisId" Type="varchar" MaxLength="50" />
+          <Property Name="OdenenMiktar" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OdemeTipi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KategoriTablo">
+          <Key>
+            <PropertyRef Name="KategoriId" />
+          </Key>
+          <Property Name="KategoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriIsim" Type="varchar" MaxLength="500" />
+          <Property Name="AktifMi" Type="bit" />
+          <Property Name="SilindiMi" Type="bit" />
+        </EntityType>
+        <EntityType Name="RollerTablo">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolIsim" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="sepetDurumuTablo">
+          <Key>
+            <PropertyRef Name="SepetDurumuId" />
+          </Key>
+          <Property Name="SepetDurumuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SepetDurumu" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="SepetTablo">
+          <Key>
+            <PropertyRef Name="SepetId" />
+          </Key>
+          <Property Name="SepetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunId" Type="int" />
+          <Property Name="UyeId" Type="int" />
+          <Property Name="SepetDurumuId" Type="int" />
+        </EntityType>
+        <EntityType Name="UrunTablo">
+          <Key>
+            <PropertyRef Name="UrunId" />
+          </Key>
+          <Property Name="UrunId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunIsim" Type="varchar" MaxLength="500" />
+          <Property Name="KategoriId" Type="int" />
+          <Property Name="AktifMi" Type="bit" />
+          <Property Name="SilindiMi" Type="bit" />
+          <Property Name="OlusturmaTarihi" Type="datetime" />
+          <Property Name="DegistirilmeTarihi" Type="datetime" />
+          <Property Name="UrunFoto" Type="varchar(max)" />
+          <Property Name="OzellikliMi" Type="bit" />
+          <Property Name="Miktar" Type="int" />
+          <Property Name="Fiyat" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Uyeler">
+          <Key>
+            <PropertyRef Name="UyeId" />
+          </Key>
+          <Property Name="UyeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="varchar" MaxLength="200" />
+          <Property Name="SoyAd" Type="varchar" MaxLength="200" />
+          <Property Name="EmailId" Type="varchar" MaxLength="200" />
+          <Property Name="Parola" Type="varchar" MaxLength="500" />
+          <Property Name="AktifMi" Type="bit" />
+          <Property Name="SilindiMi" Type="bit" />
+          <Property Name="Olusturma" Type="datetime" />
+          <Property Name="Guncelleme" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UyeRolTablo">
+          <Key>
+            <PropertyRef Name="UyeRolId" />
+          </Key>
+          <Property Name="UyeRolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UyeId" Type="int" />
+          <Property Name="RolId" Type="int" />
+        </EntityType>
+        <Association Name="FK__GonderimD__UyeId__30F848ED">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="GonderimDetayTablo" Type="Self.GonderimDetayTablo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="UyeId" />
+            </Principal>
+            <Dependent Role="GonderimDetayTablo">
+              <PropertyRef Name="UyeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SepetTabl__UrunI__36B12243">
+          <End Role="UrunTablo" Type="Self.UrunTablo" Multiplicity="0..1" />
+          <End Role="SepetTablo" Type="Self.SepetTablo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UrunTablo">
+              <PropertyRef Name="UrunId" />
+            </Principal>
+            <Dependent Role="SepetTablo">
+              <PropertyRef Name="UrunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UrunTablo__Kateg__286302EC">
+          <End Role="KategoriTablo" Type="Self.KategoriTablo" Multiplicity="0..1" />
+          <End Role="UrunTablo" Type="Self.UrunTablo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KategoriTablo">
+              <PropertyRef Name="KategoriId" />
+            </Principal>
+            <Dependent Role="UrunTablo">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="teknomarketDB1ModelStoreContainer">
+          <EntitySet Name="FotoTablo" EntityType="Self.FotoTablo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GonderimDetayTablo" EntityType="Self.GonderimDetayTablo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KategoriTablo" EntityType="Self.KategoriTablo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RollerTablo" EntityType="Self.RollerTablo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sepetDurumuTablo" EntityType="Self.sepetDurumuTablo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SepetTablo" EntityType="Self.SepetTablo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UrunTablo" EntityType="Self.UrunTablo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uyeler" EntityType="Self.Uyeler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UyeRolTablo" EntityType="Self.UyeRolTablo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__GonderimD__UyeId__30F848ED" Association="Self.FK__GonderimD__UyeId__30F848ED">
+            <End Role="Uyeler" EntitySet="Uyeler" />
+            <End Role="GonderimDetayTablo" EntitySet="GonderimDetayTablo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SepetTabl__UrunI__36B12243" Association="Self.FK__SepetTabl__UrunI__36B12243">
+            <End Role="UrunTablo" EntitySet="UrunTablo" />
+            <End Role="SepetTablo" EntitySet="SepetTablo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UrunTablo__Kateg__286302EC" Association="Self.FK__UrunTablo__Kateg__286302EC">
+            <End Role="KategoriTablo" EntitySet="KategoriTablo" />
+            <End Role="UrunTablo" EntitySet="UrunTablo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="teknomarketDB1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FotoTablo">
+          <Key>
+            <PropertyRef Name="FotoId" />
+          </Key>
+          <Property Name="FotoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FotoBaslik" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GonderimDetayTablo">
+          <Key>
+            <PropertyRef Name="GonderimDetayId" />
+          </Key>
+          <Property Name="GonderimDetayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UyeId" Type="Int32" />
+          <Property Name="Adres" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Ulke" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sehir" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Durum" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PostaKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SiparisId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OdenenMiktar" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OdemeTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Uyeler" Relationship="Self.FK__GonderimD__UyeId__30F848ED" FromRole="GonderimDetayTablo" ToRole="Uyeler" />
+        </EntityType>
+        <EntityType Name="KategoriTablo">
+          <Key>
+            <PropertyRef Name="KategoriId" />
+          </Key>
+          <Property Name="KategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriIsim" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AktifMi" Type="Boolean" />
+          <Property Name="SilindiMi" Type="Boolean" />
+          <NavigationProperty Name="UrunTablo" Relationship="teknomarketDB1Model.FK__UrunTablo__Kateg__286302EC" FromRole="KategoriTablo" ToRole="UrunTablo" />
+        </EntityType>
+        <EntityType Name="RollerTablo">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolIsim" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sepetDurumuTablo">
+          <Key>
+            <PropertyRef Name="SepetDurumuId" />
+          </Key>
+          <Property Name="SepetDurumuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SepetDurumu" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SepetTablo">
+          <Key>
+            <PropertyRef Name="SepetId" />
+          </Key>
+          <Property Name="SepetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunId" Type="Int32" />
+          <Property Name="UyeId" Type="Int32" />
+          <Property Name="SepetDurumuId" Type="Int32" />
+          <NavigationProperty Name="UrunTablo" Relationship="teknomarketDB1Model.FK__SepetTabl__UrunI__36B12243" FromRole="SepetTablo" ToRole="UrunTablo" />
+        </EntityType>
+        <EntityType Name="Uyeler">
+          <Key>
+            <PropertyRef Name="UyeId" />
+          </Key>
+          <Property Name="UyeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SoyAd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Parola" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AktifMi" Type="Boolean" />
+          <Property Name="SilindiMi" Type="Boolean" />
+          <Property Name="Olusturma" Type="DateTime" Precision="3" />
+          <Property Name="Guncelleme" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="GonderimDetayTablo" Relationship="Self.FK__GonderimD__UyeId__30F848ED" FromRole="Uyeler" ToRole="GonderimDetayTablo" />
+        </EntityType>
+        <EntityType Name="UyeRolTablo">
+          <Key>
+            <PropertyRef Name="UyeRolId" />
+          </Key>
+          <Property Name="UyeRolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UyeId" Type="Int32" />
+          <Property Name="RolId" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__GonderimD__UyeId__30F848ED">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="GonderimDetayTablo" Type="Self.GonderimDetayTablo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="UyeId" />
+            </Principal>
+            <Dependent Role="GonderimDetayTablo">
+              <PropertyRef Name="UyeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="teknomarketDB1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FotoTablo" EntityType="Self.FotoTablo" />
+          <EntitySet Name="GonderimDetayTablo" EntityType="Self.GonderimDetayTablo" />
+          <EntitySet Name="KategoriTablo" EntityType="Self.KategoriTablo" />
+          <EntitySet Name="RollerTablo" EntityType="Self.RollerTablo" />
+          <EntitySet Name="sepetDurumuTablo" EntityType="Self.sepetDurumuTablo" />
+          <EntitySet Name="SepetTablo" EntityType="Self.SepetTablo" />
+          <EntitySet Name="Uyeler" EntityType="Self.Uyeler" />
+          <EntitySet Name="UyeRolTablo" EntityType="Self.UyeRolTablo" />
+          <AssociationSet Name="FK__GonderimD__UyeId__30F848ED" Association="Self.FK__GonderimD__UyeId__30F848ED">
+            <End Role="Uyeler" EntitySet="Uyeler" />
+            <End Role="GonderimDetayTablo" EntitySet="GonderimDetayTablo" />
+          </AssociationSet>
+          <EntitySet Name="UrunTablo" EntityType="teknomarketDB1Model.UrunTablo" />
+          <AssociationSet Name="FK__UrunTablo__Kateg__286302EC" Association="teknomarketDB1Model.FK__UrunTablo__Kateg__286302EC">
+            <End Role="KategoriTablo" EntitySet="KategoriTablo" />
+            <End Role="UrunTablo" EntitySet="UrunTablo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SepetTabl__UrunI__36B12243" Association="teknomarketDB1Model.FK__SepetTabl__UrunI__36B12243">
+            <End Role="UrunTablo" EntitySet="UrunTablo" />
+            <End Role="SepetTablo" EntitySet="SepetTablo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="UrunTablo">
+          <Key>
+            <PropertyRef Name="UrunId" />
+          </Key>
+          <Property Name="UrunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunIsim" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="KategoriId" Type="Int32" />
+          <Property Name="AktifMi" Type="Boolean" />
+          <Property Name="SilindiMi" Type="Boolean" />
+          <Property Name="OlusturmaTarihi" Type="DateTime" Precision="3" />
+          <Property Name="DegistirilmeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="UrunFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OzellikliMi" Type="Boolean" />
+          <Property Name="Miktar" Type="Int32" />
+          <Property Name="Fiyat" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="KategoriTablo" Relationship="teknomarketDB1Model.FK__UrunTablo__Kateg__286302EC" FromRole="UrunTablo" ToRole="KategoriTablo" />
+          <NavigationProperty Name="SepetTablo" Relationship="teknomarketDB1Model.FK__SepetTabl__UrunI__36B12243" FromRole="UrunTablo" ToRole="SepetTablo" />
+        </EntityType>
+        <Association Name="FK__UrunTablo__Kateg__286302EC">
+          <End Type="teknomarketDB1Model.KategoriTablo" Role="KategoriTablo" Multiplicity="0..1" />
+          <End Type="teknomarketDB1Model.UrunTablo" Role="UrunTablo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KategoriTablo">
+              <PropertyRef Name="KategoriId" />
+            </Principal>
+            <Dependent Role="UrunTablo">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SepetTabl__UrunI__36B12243">
+          <End Type="teknomarketDB1Model.UrunTablo" Role="UrunTablo" Multiplicity="0..1" />
+          <End Type="teknomarketDB1Model.SepetTablo" Role="SepetTablo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UrunTablo">
+              <PropertyRef Name="UrunId" />
+            </Principal>
+            <Dependent Role="SepetTablo">
+              <PropertyRef Name="UrunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="teknomarketDB1ModelStoreContainer" CdmEntityContainer="teknomarketDB1Entities">
+          <EntitySetMapping Name="FotoTablo">
+            <EntityTypeMapping TypeName="teknomarketDB1Model.FotoTablo">
+              <MappingFragment StoreEntitySet="FotoTablo">
+                <ScalarProperty Name="FotoId" ColumnName="FotoId" />
+                <ScalarProperty Name="FotoBaslik" ColumnName="FotoBaslik" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GonderimDetayTablo">
+            <EntityTypeMapping TypeName="teknomarketDB1Model.GonderimDetayTablo">
+              <MappingFragment StoreEntitySet="GonderimDetayTablo">
+                <ScalarProperty Name="GonderimDetayId" ColumnName="GonderimDetayId" />
+                <ScalarProperty Name="UyeId" ColumnName="UyeId" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Ulke" ColumnName="Ulke" />
+                <ScalarProperty Name="Sehir" ColumnName="Sehir" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="PostaKodu" ColumnName="PostaKodu" />
+                <ScalarProperty Name="SiparisId" ColumnName="SiparisId" />
+                <ScalarProperty Name="OdenenMiktar" ColumnName="OdenenMiktar" />
+                <ScalarProperty Name="OdemeTipi" ColumnName="OdemeTipi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KategoriTablo">
+            <EntityTypeMapping TypeName="teknomarketDB1Model.KategoriTablo">
+              <MappingFragment StoreEntitySet="KategoriTablo">
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="KategoriIsim" ColumnName="KategoriIsim" />
+                <ScalarProperty Name="AktifMi" ColumnName="AktifMi" />
+                <ScalarProperty Name="SilindiMi" ColumnName="SilindiMi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RollerTablo">
+            <EntityTypeMapping TypeName="teknomarketDB1Model.RollerTablo">
+              <MappingFragment StoreEntitySet="RollerTablo">
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="RolIsim" ColumnName="RolIsim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sepetDurumuTablo">
+            <EntityTypeMapping TypeName="teknomarketDB1Model.sepetDurumuTablo">
+              <MappingFragment StoreEntitySet="sepetDurumuTablo">
+                <ScalarProperty Name="SepetDurumuId" ColumnName="SepetDurumuId" />
+                <ScalarProperty Name="SepetDurumu" ColumnName="SepetDurumu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SepetTablo">
+            <EntityTypeMapping TypeName="teknomarketDB1Model.SepetTablo">
+              <MappingFragment StoreEntitySet="SepetTablo">
+                <ScalarProperty Name="SepetId" ColumnName="SepetId" />
+                <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+                <ScalarProperty Name="UyeId" ColumnName="UyeId" />
+                <ScalarProperty Name="SepetDurumuId" ColumnName="SepetDurumuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uyeler">
+            <EntityTypeMapping TypeName="teknomarketDB1Model.Uyeler">
+              <MappingFragment StoreEntitySet="Uyeler">
+                <ScalarProperty Name="UyeId" ColumnName="UyeId" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="SoyAd" ColumnName="SoyAd" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Parola" ColumnName="Parola" />
+                <ScalarProperty Name="AktifMi" ColumnName="AktifMi" />
+                <ScalarProperty Name="SilindiMi" ColumnName="SilindiMi" />
+                <ScalarProperty Name="Olusturma" ColumnName="Olusturma" />
+                <ScalarProperty Name="Guncelleme" ColumnName="Guncelleme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UyeRolTablo">
+            <EntityTypeMapping TypeName="teknomarketDB1Model.UyeRolTablo">
+              <MappingFragment StoreEntitySet="UyeRolTablo">
+                <ScalarProperty Name="UyeRolId" ColumnName="UyeRolId" />
+                <ScalarProperty Name="UyeId" ColumnName="UyeId" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UrunTablo">
+            <EntityTypeMapping TypeName="teknomarketDB1Model.UrunTablo">
+              <MappingFragment StoreEntitySet="UrunTablo">
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+                <ScalarProperty Name="OzellikliMi" ColumnName="OzellikliMi" />
+                <ScalarProperty Name="UrunFoto" ColumnName="UrunFoto" />
+                <ScalarProperty Name="DegistirilmeTarihi" ColumnName="DegistirilmeTarihi" />
+                <ScalarProperty Name="OlusturmaTarihi" ColumnName="OlusturmaTarihi" />
+                <ScalarProperty Name="SilindiMi" ColumnName="SilindiMi" />
+                <ScalarProperty Name="AktifMi" ColumnName="AktifMi" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="UrunIsim" ColumnName="UrunIsim" />
+                <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

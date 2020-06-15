@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="teknomarketDB1ModelStoreContainer" CdmEntityContainer="teknomarketDB1Entities">
+    <EntitySetMapping Name="FotoTablo">
+      <EntityTypeMapping TypeName="teknomarketDB1Model.FotoTablo">
+        <MappingFragment StoreEntitySet="FotoTablo">
+          <ScalarProperty Name="FotoId" ColumnName="FotoId" />
+          <ScalarProperty Name="FotoBaslik" ColumnName="FotoBaslik" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GonderimDetayTablo">
+      <EntityTypeMapping TypeName="teknomarketDB1Model.GonderimDetayTablo">
+        <MappingFragment StoreEntitySet="GonderimDetayTablo">
+          <ScalarProperty Name="GonderimDetayId" ColumnName="GonderimDetayId" />
+          <ScalarProperty Name="UyeId" ColumnName="UyeId" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="Ulke" ColumnName="Ulke" />
+          <ScalarProperty Name="Sehir" ColumnName="Sehir" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="PostaKodu" ColumnName="PostaKodu" />
+          <ScalarProperty Name="SiparisId" ColumnName="SiparisId" />
+          <ScalarProperty Name="OdenenMiktar" ColumnName="OdenenMiktar" />
+          <ScalarProperty Name="OdemeTipi" ColumnName="OdemeTipi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KategoriTablo">
+      <EntityTypeMapping TypeName="teknomarketDB1Model.KategoriTablo">
+        <MappingFragment StoreEntitySet="KategoriTablo">
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+          <ScalarProperty Name="KategoriIsim" ColumnName="KategoriIsim" />
+          <ScalarProperty Name="AktifMi" ColumnName="AktifMi" />
+          <ScalarProperty Name="SilindiMi" ColumnName="SilindiMi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RollerTablo">
+      <EntityTypeMapping TypeName="teknomarketDB1Model.RollerTablo">
+        <MappingFragment StoreEntitySet="RollerTablo">
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+          <ScalarProperty Name="RolIsim" ColumnName="RolIsim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sepetDurumuTablo">
+      <EntityTypeMapping TypeName="teknomarketDB1Model.sepetDurumuTablo">
+        <MappingFragment StoreEntitySet="sepetDurumuTablo">
+          <ScalarProperty Name="SepetDurumuId" ColumnName="SepetDurumuId" />
+          <ScalarProperty Name="SepetDurumu" ColumnName="SepetDurumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SepetTablo">
+      <EntityTypeMapping TypeName="teknomarketDB1Model.SepetTablo">
+        <MappingFragment StoreEntitySet="SepetTablo">
+          <ScalarProperty Name="SepetId" ColumnName="SepetId" />
+          <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+          <ScalarProperty Name="UyeId" ColumnName="UyeId" />
+          <ScalarProperty Name="SepetDurumuId" ColumnName="SepetDurumuId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uyeler">
+      <EntityTypeMapping TypeName="teknomarketDB1Model.Uyeler">
+        <MappingFragment StoreEntitySet="Uyeler">
+          <ScalarProperty Name="UyeId" ColumnName="UyeId" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="SoyAd" ColumnName="SoyAd" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="Parola" ColumnName="Parola" />
+          <ScalarProperty Name="AktifMi" ColumnName="AktifMi" />
+          <ScalarProperty Name="SilindiMi" ColumnName="SilindiMi" />
+          <ScalarProperty Name="Olusturma" ColumnName="Olusturma" />
+          <ScalarProperty Name="Guncelleme" ColumnName="Guncelleme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UyeRolTablo">
+      <EntityTypeMapping TypeName="teknomarketDB1Model.UyeRolTablo">
+        <MappingFragment StoreEntitySet="UyeRolTablo">
+          <ScalarProperty Name="UyeRolId" ColumnName="UyeRolId" />
+          <ScalarProperty Name="UyeId" ColumnName="UyeId" />
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UrunTablo">
+      <EntityTypeMapping TypeName="teknomarketDB1Model.UrunTablo">
+        <MappingFragment StoreEntitySet="UrunTablo">
+          <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+          <ScalarProperty Name="OzellikliMi" ColumnName="OzellikliMi" />
+          <ScalarProperty Name="UrunFoto" ColumnName="UrunFoto" />
+          <ScalarProperty Name="DegistirilmeTarihi" ColumnName="DegistirilmeTarihi" />
+          <ScalarProperty Name="OlusturmaTarihi" ColumnName="OlusturmaTarihi" />
+          <ScalarProperty Name="SilindiMi" ColumnName="SilindiMi" />
+          <ScalarProperty Name="AktifMi" ColumnName="AktifMi" />
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+          <ScalarProperty Name="UrunIsim" ColumnName="UrunIsim" />
+          <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
