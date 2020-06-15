@@ -1,3 +1,4 @@
+Grup 14
 Veri tabanı bağlantısı için;
 WebProjesiSqlKomutları.txt dosyasını MS Server Management System -> new query
 dedikten sonra kopyalayıp yapıştırın. Execute yapın.
